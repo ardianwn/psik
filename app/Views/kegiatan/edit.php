@@ -5,8 +5,39 @@ Edit Acara
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="container mt-5">
-    <h2>Edit Acara</h2>
+<?= $this->include('layouts/header') ?>
+<div class="container mt-3">
+    <h4>Edit Acara</h4>
+
+    <style>
+        .container {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            margin-left: 15px;
+            border: 1px solid #D9D9D9;
+            padding: 50px;
+            width: 100%; /* Full width */
+            max-width: 98%; /* Set maximum width */
+            height: 87%; /* Set fixed height */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for better appearance */
+            overflow: auto; /* Add scroll if content overflows */
+        }
+        .btn-custom {
+            margin-right: 10px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary-custom {
+            background-color: #02347e;
+            color: white;
+            border-color: #02347e;
+        }
+        h4 {
+            text-align: center;
+        }
+    </style>
 
     <?php if(session()->getFlashdata('errors')): ?>
         <div class="alert alert-danger">

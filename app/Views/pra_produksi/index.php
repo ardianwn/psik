@@ -5,21 +5,102 @@ Daftar Pra Produksi
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="container mt-5">
-    <h2>Daftar Pra Produksi</h2>
+<?= $this->include('layouts/header') ?>
+<div class="custom-container mt-3">
+    <h4>Daftar Pra Produksi</h4>
+    <style>
+        .custom-container{
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            margin: 15px;
+            border: 1px solid #D9D9D9;
+            padding: 50px;
+            width: 98%;
+        }
+        /* Styling untuk masing-masing tombol */
+        .btn-custom {
+            margin-right: 10px; /* Jarak antar tombol */
+            border-radius: 10px; /* Border radius */
+            border: 1px solid transparent; /* Tambahkan border */
+        }
+
+        /* Styling tombol sesuai tema */
+        .btn-primary-custom {
+            background-color: #02347e;
+            color: white;
+            border-color: #02347e;
+        }
+
+        .btn-success-custom {
+            background-color: #1d6f42;
+            color: white;
+            border-color: #1d6f42;
+        }
+
+        .btn-danger-custom {
+            background-color: #960019;
+            color: white;
+            border-color: #960019;
+        }
+
+        /* Styling untuk input search */
+        .search-input {
+            border-radius: 15px;
+            padding: 0.375rem 1.75rem;
+            width: 200px;
+            border: 1px solid #ced4da;
+        }
+
+        /* Styling table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 2px solid #000;
+        }
+
+        .custom-th{
+            background-color: #02347e;
+            color: white;
+        }
+        th {
+            background-color: #02347e;
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Styling pagination */
+        .pagination {
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
 
     <div class="d-flex justify-content-between mb-3">
         <!-- Tambah Pra Produksi -->
-        <a href="/pra_produksi/create" class="btn btn-primary">Tambah</a>
+        <a href="/pra_produksi/create" class="btn btn-primary btn-custom btn-primary-custom">Tambah</a>
 
         <!-- Search Form -->
-        <input type="text" id="searchInput" class="form-control w-25" placeholder="Search">
+        <input type="text" id="searchInput" class="form-control search-input" placeholder="Search">
     </div>
 
     <!-- Table -->
     <table class="table table-bordered table-hover" id="pra_produksi">
         <thead>
-            <tr>
+            <tr class="custom-th">
                 <th>No</th>
                 <th>ID Acara</th>
                 <th>Status Internet</th>
@@ -47,7 +128,9 @@ Daftar Pra Produksi
         </tbody>
     </table>
 
-    <p><a href="pasca_produksi">Selanjutnya</a></p>
+    <div class="d-flex justify-content-end mt-5">
+        <a href="pasca_produksi" class="btn btn-secondary">Selanjutnya</a>
+    </div>
 
     <!-- Pagination -->
     <nav id="paginationNav">

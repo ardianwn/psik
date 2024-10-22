@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Kegiatan;
+use App\Models\KegiatanModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class KegiatanController extends BaseController
@@ -11,7 +11,7 @@ class KegiatanController extends BaseController
 
     public function __construct()
     {
-        $this->kegiatanModel = new Kegiatan();
+        $this->kegiatanModel = new KegiatanModel();
     }
 
     public function index()
@@ -46,6 +46,19 @@ class KegiatanController extends BaseController
         } else {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
+    }
+
+    public function view($id)
+    {
+        $data['kegiatan'] = $this->kegiatanModel->find($id);
+        $data['pra_produksi'] = model('PraProduksiModel')->where('id_acara', $id)->first();
+        $data['pasca_produksi'] = model('PascaProduksiModel')->where('id_acara', $id)->first();
+        
+        if (!$data['kegiatan']) {
+            throw new PageNotFoundException("Data dengan id $id tidak ditemukan");
+        }
+        
+        return view('kegiatan/view', $data);
     }
 
     public function edit($id)

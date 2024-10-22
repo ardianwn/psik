@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PascaProduksiModel;
 use App\Models\Kegiatan;
+use App\Models\KegiatanModel;
 
 class PascaProduksi extends BaseController
 {
@@ -12,7 +13,7 @@ class PascaProduksi extends BaseController
 
     public function __construct() {
         $this->pascaProduksiModel = new PascaProduksiModel();
-        $this->kegiatanModel = new Kegiatan();
+        $this->kegiatanModel = new KegiatanModel();
     }
 
     public function index() {

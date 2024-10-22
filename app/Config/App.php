@@ -7,6 +7,28 @@ use CodeIgniter\Config\BaseConfig;
 class App extends BaseConfig
 {
     /**
+    *|--------------------------------------------------------------------------
+    *| Session Variables
+    *|--------------------------------------------------------------------------
+    *|
+    *| 'sessionDriver'            = the driver to load: codecigniter, database, redis, memcached
+    *| 'sessionCookieName'        = the name you want for the cookie
+    *| 'sessionExpiration'        = the number of SECONDS you want the session to last.
+    *|   by default sessions last 7200 seconds (two hours).
+    *| 'sessionSavePath'          = the location to save sessions to
+    *| 'sessionMatchIP'           = whether to match the user's IP address when reading the session data
+    *| 'sessionTimeToUpdate'      = how many seconds between CI regenerating the session ID
+    *| 'sessionRegenerateDestroy' = Whether to destroy session data associated with the old session ID
+    */
+    
+    public $sessionDriver            = 'CodeIgniter\Session\Handlers\FileHandler';
+    public $sessionCookieName        = 'ci_session';
+    public $sessionExpiration        = 7200;
+    public $sessionSavePath          = WRITEPATH . 'session';
+    public $sessionMatchIP           = false;
+    public $sessionTimeToUpdate      = 300;
+    public $sessionRegenerateDestroy = false;
+    /**
      * --------------------------------------------------------------------------
      * Base Site URL
      * --------------------------------------------------------------------------

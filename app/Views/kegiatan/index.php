@@ -7,21 +7,115 @@ Daftar Acara
 <?= $this->section('content') ?>
 <?= $this->include('layouts/header') ?>
 
-<div class="container mt-5">
-    <h2>Daftar Acara</h2>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
 
-    <div class="d-flex justify-content-between mb-3">
-        <!-- Tambah Acara -->
-        <a href="/kegiatan/create" class="btn btn-primary">Tambah</a>
+<div class="custom-container mt-3">
+    <h4>Daftar Acara</h4>
+    <style>
+        .custom-container{
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            margin: 15px;
+            border: 1px solid #D9D9D9;
+            padding: 50px;
+            width: 98%;
+        }
+        /* Styling untuk masing-masing tombol */
+        .btn-custom {
+            margin-right: 10px; /* Jarak antar tombol */
+            border-radius: 10px; /* Border radius */
+            border: 1px solid transparent; /* Tambahkan border */
+        }
+
+        /* Styling tombol sesuai tema */
+        .btn-primary-custom {
+            background-color: #02347e;
+            color: white;
+            border-color: #02347e;
+        }
+
+        .btn-success-custom {
+            background-color: #1d6f42;
+            color: white;
+            border-color: #1d6f42;
+        }
+
+        .btn-danger-custom {
+            background-color: #960019;
+            color: white;
+            border-color: #960019;
+        }
+
+        /* Styling untuk input search */
+        .search-input {
+            border-radius: 15px;
+            padding: 0.375rem 1.75rem;
+            width: 200px;
+            border: 1px solid #ced4da;
+        }
+
+        /* Styling table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 2px solid #000;
+        }
+
+        .custom-th{
+            background-color: #02347e;
+            color: white;
+        }
+        th {
+            background-color: #02347e;
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .btn-info{
+            background-color: #02347e;
+            color:white;
+        }
+
+        /* Styling pagination */
+        .pagination {
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
+<div class="box-table">
+    <div class="d-flex justify-content-between mb-3 mt-3">
+        <!-- Tambah dan Download Buttons -->
+        <div class="d-inline-block">
+            <a href="/kegiatan/create" class="btn btn-primary btn-custom btn-primary-custom">Tambah</a>
+            <a href="/download/excel" class="btn btn-success btn-custom btn-success-custom">Download Excel</a>
+            <a href="/download/pdf" class="btn btn-danger btn-custom btn-danger-custom">Download PDF</a>
+        </div>
 
         <!-- Search Form -->
-        <input type="text" id="searchInput" class="form-control w-25" placeholder="Search">
+        <input type="text" id="searchInput" class="form-control search-input" placeholder="Search">
     </div>
+
 
     <!-- Table -->
     <table class="table table-bordered table-hover" id="kegiatan">
         <thead>
-            <tr>
+            <tr class="custom-th">
                 <th>No</th>
                 <th>Nama Acara</th>
                 <th>PIC</th>
@@ -43,6 +137,7 @@ Daftar Acara
                 <td><?= $row['waktu_acara']; ?></td>
                 <td><?= $row['status_kegiatan']; ?></td>
                 <td>
+                    <a href="/kegiatan/view/<?= $row['id_acara']; ?>" class="btn btn-info btn-sm">View</a>
                     <a href="/kegiatan/edit/<?= $row['id_acara']; ?>" class="btn btn-warning btn-sm">Edit</a>
                     <a href="/kegiatan/delete/<?= $row['id_acara']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus acara ini?')">Delete</a>
                 </td>
@@ -51,7 +146,9 @@ Daftar Acara
         </tbody>
     </table>
 
-    <p><a href="pra_produksi">Selanjutnya</a></p>
+    <div class="d-flex justify-content-end mt-5">
+        <a href="pra_produksi" class="btn btn-secondary">Selanjutnya</a>
+    </div>
 
     <!-- Pagination -->
     <nav id="paginationNav">
